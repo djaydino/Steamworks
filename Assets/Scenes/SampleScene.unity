@@ -676,7 +676,7 @@ MonoBehaviour:
           name: True
           isSystemEvent: 0
           isGlobal: 0
-        toState: NAME ME!! 3
+        toState: NAME ME!! 7
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -776,8 +776,8 @@ MonoBehaviour:
         customNames:
         - 
         - 
-        actionEnabled: 0000
-        actionIsOpen: 0001
+        actionEnabled: 0100
+        actionIsOpen: 0101
         actionStartIndex: 0000000003000000
         actionHashCodes: 5234820148c01101
         unityObjectParams: []
@@ -815,7 +815,7 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
-        - True
+        - FINISHED
         - False
         - 
         byteData: 00
@@ -873,8 +873,8 @@ MonoBehaviour:
         - 
         actionEnabled: 010101
         actionIsOpen: 010000
-        actionStartIndex: 00000000090000000d000000
-        actionHashCodes: 00038902dab94600c4b05004
+        actionStartIndex: 00000000060000000a000000
+        actionHashCodes: bfda1504dab94600c4b05004
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -943,24 +943,6 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: 0
-        - useVariable: 1
-          name: Current Progress
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 1
-          name: Max Progress
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
-        - useVariable: 1
-          name: Persentage Progress
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -998,7 +980,7 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 12000000120000001200000011000000110000001000000010000000100000001000000012000000100000001800000017000000140000001800000011000000
+        paramDataType: 12000000120000001200000011000000110000001000000012000000100000001800000017000000140000001800000011000000
         paramName:
         - achievementAPIname
         - name
@@ -1006,9 +988,6 @@ MonoBehaviour:
         - isAchieved
         - hidden
         - unlockTime
-        - CurrentProgress
-        - MaxProgress
-        - persentageProgress
         - achievementAPIname
         - retryCounter
         - icon
@@ -1016,8 +995,8 @@ MonoBehaviour:
         - gameObject
         - sprite
         - resetOnExit
-        paramDataPos: 00000000010000000200000000000000010000000000000001000000020000000300000003000000040000000000000000000000000000000100000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+        paramDataPos: 00000000010000000200000000000000010000000000000003000000010000000000000000000000000000000100000002000000
+        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     - name: NAME ME!! 4
       description: 
       colorIndex: 0
@@ -1130,20 +1109,38 @@ MonoBehaviour:
         x: 1040
         y: 288
         width: 114
-        height: 16
+        height: 48
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
-      transitions: []
+      transitions:
+      - fsmEvent:
+          name: Done
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: NAME ME!! 14
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Failed
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: NAME ME!! 15
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.Steam_SetAchievement
+        - HutongGames.PlayMaker.Actions.Steam_IndicateAchievementProgress
         customNames:
         - 
-        actionEnabled: 01
-        actionIsOpen: 01
-        actionStartIndex: 00000000
-        actionHashCodes: 5fdc5e01
+        - 
+        actionEnabled: 0001
+        actionIsOpen: 0101
+        actionStartIndex: 0000000004000000
+        actionHashCodes: 5fdc5e01559f8f05
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -1160,13 +1157,37 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: ACH_WIN_100_GAMES
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: ACH_WIN_100_GAMES
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
-        fsmIntParams: []
+        fsmIntParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 20
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 100
         fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -1181,19 +1202,27 @@ MonoBehaviour:
         stringParams:
         - 
         - 
+        - Done
+        - Failed
         byteData: 
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 12000000110000001700000017000000
+        paramDataType: 12000000110000001700000017000000120000001000000010000000110000001700000017000000
         paramName:
         - achievementAPIname
         - isSuccess
         - success
         - failed
-        paramDataPos: 00000000000000000000000001000000
-        paramByteDataSize: 00000000000000000000000000000000
+        - achievementAPIname
+        - CurrentProgress
+        - MaxProgress
+        - isSuccess
+        - success
+        - failed
+        paramDataPos: 00000000000000000000000001000000010000000000000001000000010000000200000003000000
+        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
     - name: NAME ME!! 6
       description: 
       colorIndex: 0
@@ -1652,6 +1681,110 @@ MonoBehaviour:
         serializedVersion: 2
         x: 64
         y: 128
+        width: 123
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    - name: NAME ME!! 14
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 1248
+        y: 304
+        width: 123
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    - name: NAME ME!! 15
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 1184
+        y: 368
         width: 123
         height: 16
       isBreakpoint: 0
