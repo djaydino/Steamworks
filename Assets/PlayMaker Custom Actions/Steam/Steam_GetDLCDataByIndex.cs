@@ -26,7 +26,7 @@ namespace HutongGames.PlayMaker.Actions
         [Tooltip("Returns the name of the DLC")]
         public FsmString dlcName;
 
-       
+        public FsmInt cchNameBufferSize;
 
         [Tooltip("give an error event if no data")]
         public FsmEvent Error;
@@ -35,7 +35,7 @@ namespace HutongGames.PlayMaker.Actions
         private AppId_t appId_t;
         private bool avBool;
         private string name;
-        private int cchNameBufferSize;
+
         public override void Reset()
         {
             indexDLC = null;
@@ -46,8 +46,8 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            bool cool = SteamApps.BGetDLCDataByIndex(indexDLC.Value, out appId_t, out avBool, out name, cchNameBufferSize);
-            if(cool)
+            bool gotData = SteamApps.BGetDLCDataByIndex(indexDLC.Value, out appId_t, out avBool, out name, (int)cchNameBufferSize.Value);
+            if(gotData)
             {
                 appID.Value = Convert.ToInt32(appId_t);
                 available.Value = avBool;

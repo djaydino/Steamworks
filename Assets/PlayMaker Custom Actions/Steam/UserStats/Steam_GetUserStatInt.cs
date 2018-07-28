@@ -9,9 +9,12 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets stat int information")]
-    public class Steam_GetStatInt: FsmStateAction
+    [Tooltip("request User stats")]
+    public class Steam_GetUserStatInt : FsmStateAction
     {
+        [RequiredField]
+        public FsmString userID;
+
         [RequiredField]
         public FsmString statAPIname;
 
@@ -32,8 +35,12 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            bool isSucces = SteamUserStats.GetStat((string)statAPIname.Value, out statInt);
-            if(isSucces)
+            ulong ID = ulong.Parse(userID.Value);
+            CSteamID steamID = SteamUser.GetSteamID();
+            steamID.m_SteamID = ID;
+            SteamUserStats.RequestUserStats(steamID);
+            bool isSucces = SteamUserStats.GetUserStat(steamID, (string)statAPIname.Value, out statInt);
+            if (isSucces)
             {
                 intData.Value = statInt;
                 Fsm.Event(success);
@@ -42,7 +49,6 @@ namespace HutongGames.PlayMaker.Actions
             {
                 Fsm.Event(failed);
             }
-
             Finish();
         }
     }

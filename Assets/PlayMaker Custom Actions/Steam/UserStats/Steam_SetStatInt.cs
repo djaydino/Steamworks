@@ -9,20 +9,19 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets stat int information")]
-    public class Steam_GetStatInt: FsmStateAction
+    [Tooltip("Sets Stat int information")]
+    public class Steam_SetStatInt : FsmStateAction
+
     {
         [RequiredField]
         public FsmString statAPIname;
 
-        [UIHint(UIHint.Variable)]
         public FsmInt intData;
 
         public FsmEvent success;
 
         public FsmEvent failed;
 
-        private int statInt;
 
         public override void Reset()
         {
@@ -32,15 +31,19 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            bool isSucces = SteamUserStats.GetStat((string)statAPIname.Value, out statInt);
-            if(isSucces)
+            bool isSucces = SteamUserStats.SetStat((string)statAPIname.Value, (int)intData.Value);
+            if (isSucces)
             {
-                intData.Value = statInt;
-                Fsm.Event(success);
-            }
-            else
-            {
-                Fsm.Event(failed);
+                bool storeStats = SteamUserStats.StoreStats();
+
+                if (storeStats)
+                {
+                    Fsm.Event(success);
+                }
+                else
+                {
+                    Fsm.Event(failed);
+                }
             }
 
             Finish();

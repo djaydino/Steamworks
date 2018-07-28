@@ -20,19 +20,20 @@ namespace HutongGames.PlayMaker.Actions
         public FsmString betaName;
 
         [UIHint(UIHint.Variable)]
-        [Tooltip("get bytes")]
+        [Tooltip("get if user is on beta")]
         public FsmBool userOnBeta;
+
+        public FsmInt cchNameBufferSize;
 
         public FsmEvent isOnBeta;
 
         public FsmEvent isNotOnBeta;
 
         private string betaN;
-        private int cchNameBufferSize;
         public override void Reset()
         {
             betaName = null;
-            
+            cchNameBufferSize = 0;
             userOnBeta = null;
             isOnBeta = null;
             isNotOnBeta = null;
@@ -40,7 +41,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            userOnBeta.Value = (SteamApps.GetCurrentBetaName(out betaN, cchNameBufferSize));
+            userOnBeta.Value = (SteamApps.GetCurrentBetaName(out betaN, (int)cchNameBufferSize.Value));
             if(userOnBeta.Value)
             {
                 betaName.Value = betaN;

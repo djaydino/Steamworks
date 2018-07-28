@@ -9,40 +9,46 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets stat int information")]
-    public class Steam_GetStatInt: FsmStateAction
+    [Tooltip("request User stats")]
+    public class Steam_GetUserStatFloat : FsmStateAction
     {
+        [RequiredField]
+        public FsmString userID;
+
         [RequiredField]
         public FsmString statAPIname;
 
         [UIHint(UIHint.Variable)]
-        public FsmInt intData;
+        public FsmFloat floatData;
 
         public FsmEvent success;
 
         public FsmEvent failed;
 
-        private int statInt;
+        private float statFloat;
 
         public override void Reset()
         {
             statAPIname = null;
-            intData = null;
+            floatData = null;
         }
 
         public override void OnEnter()
         {
-            bool isSucces = SteamUserStats.GetStat((string)statAPIname.Value, out statInt);
-            if(isSucces)
+            ulong ID = ulong.Parse(userID.Value);
+            CSteamID steamID = SteamUser.GetSteamID();
+            steamID.m_SteamID = ID;
+            SteamUserStats.RequestUserStats(steamID);
+            bool isSucces = SteamUserStats.GetUserStat(steamID, (string)statAPIname.Value, out statFloat);
+            if (isSucces)
             {
-                intData.Value = statInt;
+                floatData.Value = statFloat;
                 Fsm.Event(success);
             }
             else
             {
                 Fsm.Event(failed);
             }
-
             Finish();
         }
     }

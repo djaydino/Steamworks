@@ -9,14 +9,12 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets stat int information")]
-    public class Steam_GetStatInt: FsmStateAction
+    [Tooltip("request User stats")]
+    public class Steam_GetUserName : FsmStateAction
     {
         [RequiredField]
-        public FsmString statAPIname;
-
         [UIHint(UIHint.Variable)]
-        public FsmInt intData;
+        public FsmString userName;
 
         public FsmEvent success;
 
@@ -26,22 +24,13 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void Reset()
         {
-            statAPIname = null;
-            intData = null;
+            userName = null;
+
         }
 
         public override void OnEnter()
         {
-            bool isSucces = SteamUserStats.GetStat((string)statAPIname.Value, out statInt);
-            if(isSucces)
-            {
-                intData.Value = statInt;
-                Fsm.Event(success);
-            }
-            else
-            {
-                Fsm.Event(failed);
-            }
+            userName.Value = SteamFriends.GetPersonaName();
 
             Finish();
         }

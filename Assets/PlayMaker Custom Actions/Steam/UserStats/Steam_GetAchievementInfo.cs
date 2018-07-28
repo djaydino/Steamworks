@@ -29,7 +29,7 @@ namespace HutongGames.PlayMaker.Actions
         public FsmBool hidden;
 
         [UIHint(UIHint.Variable)]
-        public FsmInt unlockTime;
+        public FsmInt unlockTimeUnix;
 
 
 
@@ -46,7 +46,7 @@ namespace HutongGames.PlayMaker.Actions
             description = null;
             isAchieved = null;
             hidden = null;
-            unlockTime = null;
+            unlockTimeUnix = null;
 
         }
 
@@ -57,6 +57,7 @@ namespace HutongGames.PlayMaker.Actions
             name.Value = SteamUserStats.GetAchievementDisplayAttribute((string)statAPIname.Value, "name");
             description.Value = SteamUserStats.GetAchievementDisplayAttribute((string)statAPIname.Value, "desc");
             string isHidden = SteamUserStats.GetAchievementDisplayAttribute((string)statAPIname.Value, "hidden");
+            unlockTimeUnix.Value = (int)punUnlockTime;
             isAchieved.Value = pbAchieved;
             if (isHidden == "1")
             {
