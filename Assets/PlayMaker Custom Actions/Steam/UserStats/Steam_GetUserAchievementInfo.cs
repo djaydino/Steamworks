@@ -9,8 +9,9 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("request User stats")]
-    public class Steam_GetUserStatFloat : FsmStateAction
+    [Tooltip("Gets Achievement information")]
+    public class Steam_GetUserAchievementInfo : FsmStateAction
+
     {
         [RequiredField]
         public FsmString userID;
@@ -19,19 +20,25 @@ namespace HutongGames.PlayMaker.Actions
         public FsmString statAPIname;
 
         [UIHint(UIHint.Variable)]
-        public FsmFloat floatData;
+        public FsmBool isAchieved;
 
-        public FsmEvent success;
+        [UIHint(UIHint.Variable)]
+        public FsmInt unlockTimeUnix;
 
-        public FsmEvent failed;
 
-        private float statFloat;
+
+        private bool pbAchieved;
+        private uint punUnlockTime;
+        private uint achName;
+        uint nCurProgress;
+        uint nMaxProgress;
 
         public override void Reset()
         {
             statAPIname = null;
-            floatData = null;
-            userID = null;
+            isAchieved = null;
+            unlockTimeUnix = null;
+
         }
 
         public override void OnEnter()
@@ -40,16 +47,10 @@ namespace HutongGames.PlayMaker.Actions
             CSteamID steamID = SteamUser.GetSteamID();
             steamID.m_SteamID = ID;
             SteamUserStats.RequestUserStats(steamID);
-            bool isSucces = SteamUserStats.GetUserStat(steamID, (string)statAPIname.Value, out statFloat);
-            if (isSucces)
-            {
-                floatData.Value = statFloat;
-                Fsm.Event(success);
-            }
-            else
-            {
-                Fsm.Event(failed);
-            }
+            SteamUserStats.GetUserAchievementAndUnlockTime(steamID, (string)statAPIname.Value, out pbAchieved, out punUnlockTime);
+
+            unlockTimeUnix.Value = (int)punUnlockTime;
+            isAchieved.Value = pbAchieved;
             Finish();
         }
     }
