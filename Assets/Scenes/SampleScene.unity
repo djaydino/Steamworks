@@ -675,7 +675,7 @@ MonoBehaviour:
       - fsmEvent:
           name: True
           isSystemEvent: 0
-          isGlobal: 0
+          isGlobal: 1
         toState: NAME ME!! 7
         linkStyle: 0
         linkConstraint: 0
@@ -1241,7 +1241,7 @@ MonoBehaviour:
       - fsmEvent:
           name: True
           isSystemEvent: 0
-          isGlobal: 0
+          isGlobal: 1
         toState: NAME ME!! 1
         linkStyle: 0
         linkConstraint: 0
@@ -1684,20 +1684,40 @@ MonoBehaviour:
         x: 1248
         y: 304
         width: 123
-        height: 16
+        height: 48
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
-      transitions: []
+      transitions:
+      - fsmEvent:
+          name: Success
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: NAME ME!! 16
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: Failed
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: NAME ME!! 18
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.Steam_GetUserStatInt
+        - HutongGames.PlayMaker.Actions.Steam_SetPersonaName
+        - HutongGames.PlayMaker.Actions.Steam_GetPersonaState
         customNames:
         - 
-        actionEnabled: 01
-        actionIsOpen: 01
-        actionStartIndex: 00000000
-        actionHashCodes: 4bcd8104
+        - 
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010101
+        actionStartIndex: 000000000500000006000000
+        actionHashCodes: 4bcd810413227100a6bb1500
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -1720,12 +1740,30 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: NumGames
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: what now
+        - useVariable: 1
+          name: Personal State
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
         fsmIntParams:
+        - useVariable: 1
+          name: Int Data
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 1
           name: Int Data
           tooltip: 
@@ -1741,20 +1779,39 @@ MonoBehaviour:
         stringParams:
         - 
         - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
         byteData: 
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1200000012000000100000001700000017000000
+        paramDataType: 12000000120000001000000017000000170000001200000012000000100000001700000017000000170000001700000017000000170000001700000017000000
         paramName:
         - userID
         - statAPIname
         - intData
         - success
         - failed
-        paramDataPos: 0000000001000000000000000000000001000000
-        paramByteDataSize: 0000000000000000000000000000000000000000
+        - userName
+        - personalState
+        - stateIndex
+        - away
+        - busy
+        - lookingToPlay
+        - LookingToTrade
+        - stateMax
+        - offline
+        - online
+        - snooze
+        paramDataPos: 00000000010000000000000000000000010000000200000003000000010000000200000003000000040000000500000006000000070000000800000009000000
+        paramByteDataSize: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     - name: NAME ME!! 15
       description: 
       colorIndex: 0
@@ -1859,6 +1916,110 @@ MonoBehaviour:
         paramName: []
         paramDataPos: 
         paramByteDataSize: 
+    - name: NAME ME!! 16
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 1408
+        y: 304
+        width: 123
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
+    - name: NAME ME!! 18
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 1424
+        y: 368
+        width: 123
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
     events:
     - name: FINISHED
       isSystemEvent: 1
@@ -1872,7 +2033,13 @@ MonoBehaviour:
     - name: False
       isSystemEvent: 0
       isGlobal: 0
+    - name: Success
+      isSystemEvent: 0
+      isGlobal: 0
     - name: True
+      isSystemEvent: 0
+      isGlobal: 1
+    - name: again
       isSystemEvent: 0
       isGlobal: 0
     globalTransitions:
@@ -1881,6 +2048,14 @@ MonoBehaviour:
         isSystemEvent: 0
         isGlobal: 0
       toState: NAME ME!! 17
+      linkStyle: 0
+      linkConstraint: 0
+      colorIndex: 0
+    - fsmEvent:
+        name: again
+        isSystemEvent: 0
+        isGlobal: 0
+      toState: NAME ME!! 14
       linkStyle: 0
       linkConstraint: 0
       colorIndex: 0
@@ -1992,6 +2167,12 @@ MonoBehaviour:
         networkSync: 0
         value: 
       - useVariable: 1
+        name: Personal State
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 
+      - useVariable: 1
         name: string to split
         tooltip: 
         showInInspector: 0
@@ -2037,7 +2218,7 @@ MonoBehaviour:
       enumVariables: []
       categories:
       - 
-      variableCategoryIDs: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      variableCategoryIDs: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     description: 
     docUrl: 
     showStateLabel: 0
