@@ -13,25 +13,25 @@ namespace HutongGames.PlayMaker.Actions
 	public class Steam_IsLoggedOn : FsmStateAction
 	{
 		[UIHint(UIHint.Variable)]
-		public FsmBool Connect;
+		public FsmBool connect;
 
-        public FsmEvent connected;
+        public FsmEvent iscConnected;
 
         public FsmEvent notConnected;
 
         public override void Reset()
 		{
-            Connect = null;
-            connected = null;
+            connect = null;
+            iscConnected = null;
             notConnected = null;
         }
 		
 		public override void OnEnter()
 		{
-			Connect.Value = SteamUser.BLoggedOn();
-            if(Connect.Value)
+			connect.Value = SteamUser.BLoggedOn();
+            if(connect.Value)
             {
-                Fsm.Event(connected);
+                Fsm.Event(iscConnected);
             }
             else
             {

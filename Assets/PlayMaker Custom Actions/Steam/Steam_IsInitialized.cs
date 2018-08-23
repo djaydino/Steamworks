@@ -27,17 +27,17 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            if (SteamManager.Initialized)
-            {
-                SteamAPI.Init();
-                isInitialized.Value = true;
-                Fsm.Event(initialized);
-            }
-            else
-            {
-                isInitialized.Value = false;
-                Fsm.Event(notInitialized);
-            }
+             if (SteamAPI.Init())
+             {
+                 isInitialized.Value = true;
+                 Fsm.Event(initialized);
+             }
+             else
+             {
+                 isInitialized.Value = false;
+                 Fsm.Event(notInitialized);
+             }
+             
             Finish();
         }
     }

@@ -10,8 +10,12 @@ namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
     [Tooltip("Set a new personal name (display) name.")]
-    public class Steam_GetPersonaState : FsmStateAction
+    public class Steam_GetFriendPersonaState : FsmStateAction
     {
+        [RequiredField]
+        [Tooltip("Friends SteamID")]
+        public FsmString steamID;
+
         [Tooltip("get the result as a string")]
         [UIHint(UIHint.Variable)]
         public FsmString personalState;
@@ -32,11 +36,16 @@ namespace HutongGames.PlayMaker.Actions
         public override void Reset()
         {
             personalState = null;
+            steamID = null;
         }
 
         public override void OnEnter()
         {
-            switch (SteamFriends.GetPersonaState())
+            ulong ID = ulong.Parse(this.steamID.Value);
+            CSteamID steamID;
+            steamID.m_SteamID = ID;
+
+            switch (SteamFriends.GetFriendPersonaState(steamID))
             {
                 case EPersonaState.k_EPersonaStateOffline:
                     Fsm.Event(offline);

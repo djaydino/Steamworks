@@ -14,7 +14,7 @@ namespace HutongGames.PlayMaker.Actions
 
     {
         [RequiredField]
-        public FsmString userID;
+        public FsmString steamID;
 
         [RequiredField]
         public FsmString statAPIname;
@@ -38,12 +38,12 @@ namespace HutongGames.PlayMaker.Actions
             statAPIname = null;
             isAchieved = null;
             unlockTimeUnix = null;
-
+            steamID = null;
         }
 
         public override void OnEnter()
         {
-            ulong ID = ulong.Parse(userID.Value);
+            ulong ID = ulong.Parse(this.steamID.Value);
             CSteamID steamID = SteamUser.GetSteamID();
             steamID.m_SteamID = ID;
             SteamUserStats.RequestUserStats(steamID);

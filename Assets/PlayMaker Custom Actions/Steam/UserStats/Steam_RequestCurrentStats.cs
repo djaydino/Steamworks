@@ -19,8 +19,7 @@ namespace HutongGames.PlayMaker.Actions
         public override void OnEnter()
         {
            // UserStatsReceived_t test = RequestIsDone;
-            if (SteamManager.Initialized)
-            {
+
                 bool currentStat = SteamUserStats.RequestCurrentStats();
                 if(currentStat)
                 {
@@ -31,12 +30,7 @@ namespace HutongGames.PlayMaker.Actions
                     Debug.Log("there is no user logged in");
                     Fsm.Event(failed);
                 }
-            }
-            else
-            {
-                Debug.Log("Steam Not initialized");
                 Fsm.Event(failed);
-            }  
             Finish();
         }
     }
