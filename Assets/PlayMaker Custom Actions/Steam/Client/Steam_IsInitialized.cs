@@ -7,7 +7,7 @@ using Steamworks;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET")]
+    [ActionCategory("Steamworks.NET Client")]
     [Tooltip("check if steam is initialized")]
     public class Steam_IsInitialized : FsmStateAction
     {

@@ -16,22 +16,14 @@ namespace HutongGames.PlayMaker.Actions
         [UIHint(UIHint.Variable)]
         public FsmString userName;
 
-        public FsmEvent success;
-
-        public FsmEvent failed;
-
-        private int statInt;
-
         public override void Reset()
         {
             userName = null;
-
         }
 
         public override void OnEnter()
         {
             userName.Value = SteamFriends.GetPersonaName();
-
             Finish();
         }
     }

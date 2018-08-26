@@ -34,7 +34,7 @@ sysinfo.txt
 *.unitypackage
 
 Temp/
-
+/Assets/Editor/
 /Assets/PlayMaker/
 /Assets/PlayMaker ArrayMaker/
 /Assets/iTween/

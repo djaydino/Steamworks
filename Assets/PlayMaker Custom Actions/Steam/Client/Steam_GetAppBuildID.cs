@@ -8,24 +8,27 @@ using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET")]
-    [Tooltip("Get´s steam app ID.")]
-    public class Steam_GetAppID : FsmStateAction
+    [ActionCategory("Steamworks.NET Client")]
+    [Tooltip("Get´s steam app Build ID.")]
+    public class Steam_GetAppBuildID : FsmStateAction
     {
         [RequiredField]
-        [UIHint(UIHint.Variable)]
         public FsmInt appID;
+
+        [RequiredField]
+        [UIHint(UIHint.Variable)]
+        public FsmInt appBuildID;
 
         public override void Reset()
         {
+            appBuildID = null;
             appID = null;
         }
 
         public override void OnEnter()
         {
-            appID.Value = Convert.ToInt32(SteamUtils.GetAppID());
+            appBuildID.Value = Convert.ToInt32(SteamAppList.GetAppBuildId((AppId_t)Convert.ToUInt32(appID.Value)));
             Finish();
         }
-
     }
 }
