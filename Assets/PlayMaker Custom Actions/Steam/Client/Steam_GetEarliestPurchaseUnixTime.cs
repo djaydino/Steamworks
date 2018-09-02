@@ -29,7 +29,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            result.Value = Convert.ToInt32(SteamApps.GetEarliestPurchaseUnixTime((AppId_t)Convert.ToUInt64(appID.Value)));
+            result.Value = (int)SteamApps.GetEarliestPurchaseUnixTime((AppId_t)Convert.ToUInt64(appID.Value));
             Finish();
         }
     }

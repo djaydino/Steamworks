@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ec061b5ce3f6849bc6ee6497489ccb, type: 3}
+  m_Name: Steam_Full
+  m_EditorClassIdentifier: 
+  includeFolders:
+  - Assets/PlayMaker Custom Actions/Steam
+  excludeFolders: []
+  includeFiles: []
+  excludeFiles:
+  - Assets/PlayMaker Custom Actions/Steam/_Steam_Template.cs
+  foldersToInclude: []
+  filesToInclude: []
+  foldersToExclude: []
+  filesToExclude: []
+  includeFoldersGUID:
+  - 5e1012838c519f449b67400860cf2002
+  excludeFoldersGUID: []
+  includeFilesGUID: []
+  excludeFilesGUID:
+  - 659c630ebef25d842acb2860e1cb3029
+  foldersToIncludeGUID: []
+  filesToIncludeGUID: []
+  foldersToExcludeGUID: []
+  filesToExcludeGUID: []
+  packageName: Steam_Full
+  targetDirectory: D:/Git
+  fileExistsCheck: 1
+  expandedList: 0
+  showIncludeFolderList: 1
+  showIncludeFileList: 1
+  showExcludeFolderList: 1
+  showExcludeFileList: 1
+  showList: 1
