@@ -33,7 +33,7 @@ namespace HutongGames.PlayMaker.Actions
         public override void Reset()
         {
             betaName = null;
-            cchNameBufferSize = 0;
+            cchNameBufferSize = 20;
             userOnBeta = null;
             isOnBeta = null;
             isNotOnBeta = null;

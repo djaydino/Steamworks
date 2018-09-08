@@ -9,33 +9,33 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("Steamworks.NET - Client")]
-	[Tooltip("Test if client has a live connection to the Steam servers.\r\nFalse means there is no active connection due to either a networking issue on the local machine, or the Steam server is down/busy.")]
+	[Tooltip("Checks if the game server is logged on.")]
 	public class Steam_IsLoggedOn : FsmStateAction
 	{
 		[UIHint(UIHint.Variable)]
-		public FsmBool connect;
+		public FsmBool result;
 
-        public FsmEvent iscConnected;
+        public FsmEvent isLoggedOn;
 
-        public FsmEvent notConnected;
+        public FsmEvent notLoggedOn;
 
         public override void Reset()
 		{
-            connect = null;
-            iscConnected = null;
-            notConnected = null;
+            result = null;
+            isLoggedOn = null;
+            notLoggedOn = null;
         }
 		
 		public override void OnEnter()
 		{
-			connect.Value = SteamUser.BLoggedOn();
-            if(connect.Value)
+			result.Value = SteamUser.BLoggedOn();
+            if(result.Value)
             {
-                Fsm.Event(iscConnected);
+                Fsm.Event(isLoggedOn);
             }
             else
             {
-                Fsm.Event(notConnected);
+                Fsm.Event(notLoggedOn);
             }
 
 		}

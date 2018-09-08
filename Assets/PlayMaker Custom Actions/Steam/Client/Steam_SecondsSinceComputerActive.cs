@@ -8,7 +8,7 @@ using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steam")]
+    [ActionCategory("Steamworks.NET Client")]
     [Tooltip("Returns the number of seconds since the user last moved the mouse.")]
     public class Steam_SecondsSinceComputerActive : FsmStateAction
     {

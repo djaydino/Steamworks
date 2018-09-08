@@ -11,42 +11,49 @@ namespace HutongGames.PlayMaker.Actions
     [Tooltip("")]
     public class Steam_OverlayActive : FsmStateAction
     {
-        protected Callback<GameOverlayActivated_t> m_GameOverlayActivated;
 
         [UIHint(UIHint.Variable)]
         [Tooltip("Set to true if overlay is active")]
-        public FsmBool overlayActive;
+        public FsmBool result;
 
+       // [Tooltip("Where to send the event.")]
+       // public FsmEventTarget eventTargetOne;
+
+        [Tooltip("Send this event when Clicked.")]
         public FsmEvent active;
 
+      //  [Tooltip("Where to send the event.")]
+      //  public FsmEventTarget eventTargetTwo;
+
+        [Tooltip("Send this event when Clicked.")]
         public FsmEvent notActive;
 
+        protected Callback<GameOverlayActivated_t> m_GameOverlayActivated;
 
         public override void Reset()
         {
-            overlayActive = null;
+            result = null;
         }
 
-        public void OnEnable()
+
+        public override void OnPreprocess()
         {
             m_GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
         }
 
         private void OnGameOverlayActivated(GameOverlayActivated_t pCallback)
         {
+            
             if (pCallback.m_bActive != 0)
             {
-                overlayActive.Value = true;
+                result.Value = false;
                 Fsm.Event(active);
-                Debug.Log("Steam Overlay has been activated");
             }
             else
             {
-                overlayActive.Value = false;
+                result.Value = true;
                 Fsm.Event(notActive);
-                Debug.Log("Steam Overlay has been closed");
             }
-
         }
     }
 }

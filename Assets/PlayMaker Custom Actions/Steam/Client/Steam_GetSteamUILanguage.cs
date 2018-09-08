@@ -4,15 +4,15 @@
 
 using UnityEngine;
 using Steamworks;
-using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steam")]
-    [Tooltip("Steam server time.  Number of seconds since January 1, 1970, GMT (i.e unix time)")]
-    public class Steam_GetIPCountry : FsmStateAction
+    [ActionCategory("Steamworks.NET - Client")]
+    [Tooltip("Gets the Steam UI language")]
+    public class Steam_GetSteamUILanguage : FsmStateAction
     {
         [UIHint(UIHint.Variable)]
+        [Tooltip("The Steam UI language")]
         public FsmString result;
 
         public override void Reset()
@@ -22,8 +22,8 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            result.Value = (string)SteamUtils.GetIPCountry();
-                Finish();
+            result.Value = (string)SteamUtils.GetSteamUILanguage();
+            Finish();
         }
     }
 }

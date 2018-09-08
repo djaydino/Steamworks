@@ -9,10 +9,11 @@ namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET Client")]
     [Tooltip("initialize")]
-    public class Steam_Inint : FsmStateAction
+    public class Steam_Init : FsmStateAction
     {
         public override void OnEnter()
         {
+
             SteamAPI.Init();
             Finish();
         }
