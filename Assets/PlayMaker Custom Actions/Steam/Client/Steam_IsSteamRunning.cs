@@ -8,7 +8,7 @@ using Steamworks;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET Client")]
+    [ActionCategory("Steamworks.NET - Client")]
     [Tooltip("Test if client has a live connection to the Steam servers.\r\nFalse means there is no active connection due to either a networking issue on the local machine, or the Steam server is down/busy.")]
     public class Steam_IsSteamRunning : FsmStateAction
     {

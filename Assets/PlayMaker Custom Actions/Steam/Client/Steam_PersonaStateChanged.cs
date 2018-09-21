@@ -4,37 +4,35 @@
 using UnityEngine;
 using Steamworks;
 
-
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET Callbacks")]
-    [Tooltip("Steam server time.  Number of seconds since January 1, 1970, GMT (i.e unix time)")]
+    [ActionCategory("Steamworks.NET - Client")]
+    [Tooltip("Check if the Persona state is changed")]
     public class Steam_PersonaStateChanged : FsmStateAction
     {
 
         [Tooltip("Where to send the event.")]
         public FsmEventTarget eventTarget;
 
-        [Tooltip("Send this event when Clicked.")]
-        public FsmEvent sendEvent;
+        public FsmEvent Changed;
 
         private bool stateChanged;
 
         public override void Reset()
         {
-            sendEvent = null;
+            Changed = null;
         }
 
         protected Callback<PersonaStateChange_t> m_PersonaStateChange;
 
-        public override void OnPreprocess()
+        public override void OnEnter()
         {
             m_PersonaStateChange = Callback<PersonaStateChange_t>.Create(OnPersonaStateChange);
         }
 
         public void OnPersonaStateChange(PersonaStateChange_t pCallback)
         {
-            Fsm.Event(eventTarget, sendEvent);
+            Fsm.Event(eventTarget, Changed);
         }
     }
 }

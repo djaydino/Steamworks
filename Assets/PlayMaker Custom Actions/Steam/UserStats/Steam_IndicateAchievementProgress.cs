@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Set Achievement to true (achieved)")]
+    [Tooltip("Indicate Achievement progress \nWanring! Progress in NOT saved on steamserver")]
     public class Steam_IndicateAchievementProgress : FsmStateAction
     {
         [RequiredField]

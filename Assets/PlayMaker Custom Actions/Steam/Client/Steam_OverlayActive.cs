@@ -8,24 +8,15 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("")]
+    [Tooltip("check if overlay is active")]
     public class Steam_OverlayActive : FsmStateAction
     {
-
         [UIHint(UIHint.Variable)]
         [Tooltip("Set to true if overlay is active")]
         public FsmBool result;
 
-       // [Tooltip("Where to send the event.")]
-       // public FsmEventTarget eventTargetOne;
-
-        [Tooltip("Send this event when Clicked.")]
         public FsmEvent active;
 
-      //  [Tooltip("Where to send the event.")]
-      //  public FsmEventTarget eventTargetTwo;
-
-        [Tooltip("Send this event when Clicked.")]
         public FsmEvent notActive;
 
         protected Callback<GameOverlayActivated_t> m_GameOverlayActivated;
@@ -36,14 +27,21 @@ namespace HutongGames.PlayMaker.Actions
         }
 
 
-        public override void OnPreprocess()
+        public override void OnEnter()
         {
-            m_GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
+            if(!Application.isEditor)
+            {
+                m_GameOverlayActivated = Callback<GameOverlayActivated_t>.Create(OnGameOverlayActivated);
+            }
+            else
+            {
+                Debug.LogWarning("Steam Overlay does not work in editor mode");
+                Finish();
+            }
         }
 
         private void OnGameOverlayActivated(GameOverlayActivated_t pCallback)
         {
-            
             if (pCallback.m_bActive != 0)
             {
                 result.Value = false;

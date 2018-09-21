@@ -47,7 +47,6 @@ namespace HutongGames.PlayMaker.Actions
             isAchieved = null;
             hidden = null;
             unlockTimeUnix = null;
-
         }
 
         public override void OnEnter()

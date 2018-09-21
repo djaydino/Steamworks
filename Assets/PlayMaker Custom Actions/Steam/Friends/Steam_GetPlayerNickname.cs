@@ -9,11 +9,10 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Returns nickname the current user has set for the specified player.")]
+    [Tooltip("Get the nickname that the current user has set for the specified user.")]
     public class Steam_GetPlayerNickname : FsmStateAction
     {
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [RequiredField]

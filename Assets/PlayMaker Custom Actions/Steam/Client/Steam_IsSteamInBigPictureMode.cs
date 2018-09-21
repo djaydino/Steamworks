@@ -8,21 +8,20 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Gets the Steam UI language")]
+    [Tooltip("Check if Steam is in Big Picture Mode")]
     public class Steam_IsSteamInBigPictureMode : FsmStateAction
     {
 
-        [Tooltip("The Steam UI language")]
-        public FsmBool result;
+        public FsmBool isInBigPictureMode;
 
         public override void Reset()
         {
-            result = null;
+            isInBigPictureMode = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = (bool)SteamUtils.IsSteamInBigPictureMode();
+            isInBigPictureMode.Value = (bool)SteamUtils.IsSteamInBigPictureMode();
             Finish();
         }
     }

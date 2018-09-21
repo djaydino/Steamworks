@@ -8,21 +8,21 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Gets the Steam UI language")]
+    [Tooltip("Check if Steam is running in VR mode")]
     public class Steam_IsSteamRunningInVR : FsmStateAction
     {
 
         [UIHint(UIHint.Variable)]
-        public FsmBool result;
+        public FsmBool isRunningInVR;
 
         public override void Reset()
         {
-            result = null;
+            isRunningInVR = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = (bool)SteamUtils.IsSteamRunningInVR();
+            isRunningInVR.Value = (bool)SteamUtils.IsSteamRunningInVR();
             Finish();
         }
     }

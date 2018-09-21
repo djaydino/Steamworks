@@ -8,22 +8,22 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Returns whenever the client is subscribed to the specified Steam Workshop item")]
+    [Tooltip("Checks if the active user is subscribed to the current App ID.")]
     public class Steam_IsSubscribed : FsmStateAction
     {
         [RequiredField]
         [UIHint(UIHint.Variable)]
-        public FsmBool result;
+        public FsmBool isSubscribed;
 
 
         public override void Reset()
         {
-            result = null;
+            isSubscribed = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = SteamApps.BIsSubscribed();
+            isSubscribed.Value = SteamApps.BIsSubscribed();
             Finish();
         }
     }

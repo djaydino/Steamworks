@@ -25,17 +25,17 @@ namespace HutongGames.PlayMaker.Actions
         private ulong punBytesDownloaded;
         private ulong punBytesTotal;
 
+        protected Callback<DlcInstalled_t> m_DlcInstalled;
 
         public override void Reset()
         {
             appID = null;
             progress = null;
-            complete = null;
-
         }
 
         public override void OnEnter()
         {
+            m_DlcInstalled = Callback<DlcInstalled_t>.Create(OnDlcInstalled);
            SteamApps.InstallDLC((AppId_t)(uint)appID.Value);
             Finish();
         }
@@ -44,11 +44,12 @@ namespace HutongGames.PlayMaker.Actions
         {
             SteamApps.GetDlcDownloadProgress(((AppId_t)(uint)appID.Value), out punBytesDownloaded, out punBytesTotal);
             progress.Value = Convert.ToInt32(punBytesDownloaded / punBytesTotal) * 100;
-            if(progress.Value == 100)
-            {
-                Fsm.Event(complete);
-                Finish();
-            }
+        }
+
+        public void OnDlcInstalled(DlcInstalled_t pCallback)
+        {
+            Fsm.Event(complete);
+            Finish();
         }
     }
 }

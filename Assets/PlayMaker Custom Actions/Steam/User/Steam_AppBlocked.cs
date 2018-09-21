@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Parental Settings")]
-    [Tooltip("Get parental settings")]
+    [Tooltip("Check if app is blocked")]
     public class Steam_AppBlocked : FsmStateAction
     {
         [RequiredField]

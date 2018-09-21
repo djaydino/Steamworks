@@ -28,8 +28,8 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-           isSuccess.Value = (bool)SteamUserStats.SetAchievement((string)achievementAPIname.Value);
-            if(isSuccess.Value)
+            isSuccess.Value = (bool)SteamUserStats.SetAchievement((string)achievementAPIname.Value);
+            if (isSuccess.Value)
             {
                 SteamUserStats.StoreStats();
                 Fsm.Event(success);
@@ -40,6 +40,5 @@ namespace HutongGames.PlayMaker.Actions
             }
             Finish();
         }
-
     }
 }

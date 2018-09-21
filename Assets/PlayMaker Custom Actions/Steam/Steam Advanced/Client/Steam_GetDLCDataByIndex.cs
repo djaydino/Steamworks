@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Gets the available game languages from the Client.")]
+    [Tooltip("Returns metadata for a DLC by index.")]
     public class Steam_GetDLCDataByIndex : FsmStateAction
     {
         [RequiredField]

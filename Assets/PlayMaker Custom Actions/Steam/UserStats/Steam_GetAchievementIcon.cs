@@ -32,8 +32,6 @@ namespace HutongGames.PlayMaker.Actions
         private uint icon_width;
         private uint icon_height;
 
-
-
         public override void Reset()
         {
             achievementAPIname = null;

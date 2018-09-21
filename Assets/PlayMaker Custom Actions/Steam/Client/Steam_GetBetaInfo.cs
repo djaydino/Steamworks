@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("gets the Unix time of the purchase of the app. Use the custom action 'Read Epoch' from the Ecosystem to convert to a readable date/time")]
+    [Tooltip("Get beta info")]
     public class Steam_GetBetaInfo : FsmStateAction
 
     {
@@ -23,7 +23,8 @@ namespace HutongGames.PlayMaker.Actions
         [Tooltip("get if user is on beta")]
         public FsmBool userOnBeta;
 
-        public FsmInt cchNameBufferSize;
+        [Tooltip("Set a maximum length for the name to display")]
+        public FsmInt MaxNameLenght;
 
         public FsmEvent isOnBeta;
 
@@ -33,7 +34,7 @@ namespace HutongGames.PlayMaker.Actions
         public override void Reset()
         {
             betaName = null;
-            cchNameBufferSize = 20;
+            MaxNameLenght = 20;
             userOnBeta = null;
             isOnBeta = null;
             isNotOnBeta = null;
@@ -41,7 +42,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            userOnBeta.Value = (SteamApps.GetCurrentBetaName(out betaN, (int)cchNameBufferSize.Value));
+            userOnBeta.Value = (SteamApps.GetCurrentBetaName(out betaN, (int)MaxNameLenght.Value));
             if(userOnBeta.Value)
             {
                 betaName.Value = betaN;

@@ -7,7 +7,7 @@ using Steamworks;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET Client")]
+    [ActionCategory("Steamworks.NET - Client")]
     [Tooltip("check if steam is initialized")]
     public class Steam_IsInitialized : FsmStateAction
     {
@@ -21,23 +21,20 @@ namespace HutongGames.PlayMaker.Actions
         public override void Reset()
         {
             isInitialized = null;
-            initialized = null;
-            notInitialized = null;
         }
 
         public override void OnEnter()
         {
-             if (SteamAPI.Init())
-             {
-                 isInitialized.Value = true;
-                 Fsm.Event(initialized);
-             }
-             else
-             {
-                 isInitialized.Value = false;
-                 Fsm.Event(notInitialized);
-             }
-             
+            if (SteamAPI.Init())
+            {
+                isInitialized.Value = true;
+                Fsm.Event(initialized);
+            }
+            else
+            {
+                isInitialized.Value = false;
+                Fsm.Event(notInitialized);
+            }
             Finish();
         }
     }

@@ -8,8 +8,8 @@ using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET Client")]
-    [Tooltip("Steam server time.  Number of seconds since January 1, 1970, GMT (i.e unix time)")]
+    [ActionCategory("Steamworks.NET - Client")]
+    [Tooltip("Get Steam server time. \nUse the custom action 'Read Epoch' from the Ecosystem to convert to a readable date/time")]
     public class Steam_SteamServerTime : FsmStateAction
     {
         [UIHint(UIHint.Variable)]
@@ -29,7 +29,6 @@ namespace HutongGames.PlayMaker.Actions
             {
                 Finish();
             }
-            
         }
 
         public override void OnUpdate()

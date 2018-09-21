@@ -8,7 +8,7 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Checks if the user is subscribed to the current app through a free weekend, This will return false for users who have a retail or other type of license")]
+    [Tooltip("true if the active user is subscribed to the current App Id via a free weekend otherwise false any other type of license.")]
     public class Steam_IsSubscribedFromFreeWeekend : FsmStateAction
     {
         [RequiredField]

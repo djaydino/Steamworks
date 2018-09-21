@@ -43,7 +43,6 @@ namespace HutongGames.PlayMaker.Actions
             {
                 Fsm.Event(failed);
             }
-
             Finish();
         }
     }

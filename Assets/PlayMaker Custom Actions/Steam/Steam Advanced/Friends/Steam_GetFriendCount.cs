@@ -13,7 +13,10 @@ namespace HutongGames.PlayMaker.Actions
     public class Steam_GetFriendCount : FsmStateAction
     {
         [RequiredField]
+        [UIHint(UIHint.Variable)]
         public FsmInt count;
+
+        public EFriendFlags friendFlags = EFriendFlags.k_EFriendFlagImmediate;
 
         public override void Reset()
         {
@@ -22,7 +25,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-           count.Value = SteamFriends.GetFriendCount(EFriendFlags.k_EFriendFlagImmediate);
+           count.Value = SteamFriends.GetFriendCount(friendFlags);
             Finish();
         }
     }

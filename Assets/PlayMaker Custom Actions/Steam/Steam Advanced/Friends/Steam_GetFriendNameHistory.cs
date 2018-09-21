@@ -9,11 +9,10 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Gets the friends persona (display) name.")]
+    [Tooltip("Gets the friends name history")]
     public class Steam_GetFriendNameHistory : FsmStateAction
     {
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [RequiredField]

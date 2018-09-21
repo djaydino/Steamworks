@@ -9,11 +9,11 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets Achievement information")]
+    [Tooltip("Resets the current users stats and, optionally achievements. \nThis should typically only be used for testing purposes during development.")]
     public class Steam_ResetAllStats : FsmStateAction
 
     {
-        [Tooltip("Sets Stat int information")]
+        [Tooltip("Also Reset the Achievements")]
         public FsmBool includingAchievements;
 
         public override void Reset()

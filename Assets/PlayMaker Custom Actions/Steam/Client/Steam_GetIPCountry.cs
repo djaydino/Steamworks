@@ -8,7 +8,7 @@ using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
-    [ActionCategory("Steamworks.NET Client")]
+    [ActionCategory("Steamworks.NET - Client")]
     [Tooltip("Returns the 2 digit ISO 3166-1-alpha-2 format country code which client is running in. e.g US or UK.")]
     public class Steam_GetIPCountry : FsmStateAction
     {

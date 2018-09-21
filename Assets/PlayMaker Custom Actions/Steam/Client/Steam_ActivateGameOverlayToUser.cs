@@ -8,7 +8,7 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("")]
+    [Tooltip("Activate the User Overlay in a certain overlay type")]
     public class Steam_ActivateGameOverlayToUser : FsmStateAction
     {
         public enum OverlayType
@@ -25,11 +25,10 @@ namespace HutongGames.PlayMaker.Actions
         }
 
         [RequiredField]
-        [Tooltip("Friends SteamID")]
+        [Tooltip("Users SteamID")]
         public FsmString steamID;
 
-        [Tooltip("Select avatar size to load. Warning!! Many users do not have Large avatars")]
-        public OverlayType overlayType = OverlayType.achievements;
+        public OverlayType overlayType = OverlayType.chat;
 
         public override void Reset()
         {
@@ -38,13 +37,19 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            ulong ID = ulong.Parse(this.steamID.Value);
-            CSteamID IDsteam;
-            IDsteam.m_SteamID = ID;
-            SteamFriends.ActivateGameOverlayToUser(overlayType.ToString(), IDsteam);
-            Debug.Log(overlayType.ToString());
+            if (!Application.isEditor)
+            {
+                ulong ID = ulong.Parse(this.steamID.Value);
+                CSteamID IDsteam;
+                IDsteam.m_SteamID = ID;
+                SteamFriends.ActivateGameOverlayToUser(overlayType.ToString(), IDsteam);
+            }
+            else
+            {
+                Debug.LogWarning("Steam Overlay does not work in editor mode");
+                Finish();
+            }
             Finish();
         }
-
     }
 }

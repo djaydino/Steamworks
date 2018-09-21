@@ -13,7 +13,6 @@ namespace HutongGames.PlayMaker.Actions
     public class Steam_GetFriendPersonaName : FsmStateAction
     {
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [RequiredField]

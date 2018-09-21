@@ -9,11 +9,9 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Check if client has a certain DLC. (use the DLC AppID")]
+    [Tooltip("Check if client has a certain DLC installed. (use the DLC AppID")]
     public class Steam_IsDlcInstalled : FsmStateAction
-
     {
-
         [RequiredField]
         public FsmInt dlcAppID;
 

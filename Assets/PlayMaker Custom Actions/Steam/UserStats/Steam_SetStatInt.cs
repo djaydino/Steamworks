@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Sets Stat int information")]
+    [Tooltip("Set a Stat int information")]
     public class Steam_SetStatInt : FsmStateAction
 
     {
@@ -45,7 +45,6 @@ namespace HutongGames.PlayMaker.Actions
                     Fsm.Event(failed);
                 }
             }
-
             Finish();
         }
     }

@@ -9,22 +9,20 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Uninstall control for optional DLC")]
+    [Tooltip("Allows you to uninstall an optional DLC.")]
     public class Steam_UninstallDLC : FsmStateAction
-
     {
-
         [RequiredField]
-        public FsmInt appID;
+        public FsmInt dlcAppID;
 
         public override void Reset()
         {
-            appID = null;
+            dlcAppID = null;
         }
 
         public override void OnEnter()
         {
-           SteamApps.UninstallDLC((AppId_t)(uint)appID.Value);
+           SteamApps.UninstallDLC((AppId_t)(uint)dlcAppID.Value);
             Finish();
         }
     }

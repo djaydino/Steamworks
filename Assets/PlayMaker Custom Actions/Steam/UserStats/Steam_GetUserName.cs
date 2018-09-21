@@ -9,9 +9,12 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("request User stats")]
+    [Tooltip("Get user Name")]
     public class Steam_GetUserName : FsmStateAction
     {
+        [RequiredField]
+        public FsmString steamID;
+
         [RequiredField]
         [UIHint(UIHint.Variable)]
         public FsmString userName;
@@ -30,8 +33,10 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            userName.Value = SteamFriends.GetPersonaName();
-
+            ulong ID = ulong.Parse(this.steamID.Value);
+            CSteamID IdSteam = SteamUser.GetSteamID();
+            IdSteam.m_SteamID = ID;
+            userName.Value = (string)SteamFriends.GetFriendPersonaName(IdSteam);
             Finish();
         }
     }

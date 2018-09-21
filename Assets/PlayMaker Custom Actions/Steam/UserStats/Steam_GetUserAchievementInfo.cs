@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Gets Achievement information")]
+    [Tooltip("Gets User Achievement information")]
     public class Steam_GetUserAchievementInfo : FsmStateAction
 
     {

@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Gets the friends persona (display) name.")]
+    [Tooltip("Get the friends SteamLevel")]
     public class Steam_GetFriendSteamLevel : FsmStateAction
     {
         [RequiredField]

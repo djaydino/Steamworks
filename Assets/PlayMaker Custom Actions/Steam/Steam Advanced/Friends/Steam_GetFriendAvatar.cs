@@ -9,10 +9,9 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Returns nickname the current user has set for the specified player.")]
+    [Tooltip("Get the user avatar")]
     public class Steam_GetFriendAvatar : FsmStateAction
     {
-
         public enum AvaterSize
         {
             Small,
@@ -21,7 +20,6 @@ namespace HutongGames.PlayMaker.Actions
         }
 
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [Tooltip("Select avatar size to load. Warning!! Many users do not have Large avatars")]

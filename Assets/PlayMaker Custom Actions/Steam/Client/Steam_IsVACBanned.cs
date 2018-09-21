@@ -13,17 +13,16 @@ namespace HutongGames.PlayMaker.Actions
     {
         [RequiredField]
         [UIHint(UIHint.Variable)]
-        public FsmBool result;
-
+        public FsmBool isVACBanned;
 
         public override void Reset()
         {
-            result = null;
+            isVACBanned = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = SteamApps.BIsVACBanned();
+            isVACBanned.Value = SteamApps.BIsVACBanned();
             Finish();
         }
     }

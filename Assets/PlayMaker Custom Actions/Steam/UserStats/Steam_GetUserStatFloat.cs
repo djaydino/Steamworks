@@ -9,7 +9,7 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("request User stats")]
+    [Tooltip("request User float stats")]
     public class Steam_GetUserStatFloat : FsmStateAction
     {
         [RequiredField]

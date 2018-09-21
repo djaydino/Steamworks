@@ -9,15 +9,11 @@ namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
     [Tooltip("Checks how many apps the client has installed")]
-    public class Steam_GetNumInstalledApps : FsmStateAction
+    public class Steam_GetInstalledAppsCount : FsmStateAction
     {
         [RequiredField]
         [UIHint(UIHint.Variable)]
         public FsmInt installedAppsCount;
-
-
-        private AppId_t appIDuint;
-        private string pchName;
 
         public override void Reset()
         {

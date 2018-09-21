@@ -8,22 +8,21 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Check if client is a low violence client")]
+    [Tooltip("Check if the license owned by the user provides low violence depots.")]
     public class Steam_LowViolenceCheck : FsmStateAction
     {
         [RequiredField]
         [UIHint(UIHint.Variable)]
-        public FsmBool result;
-
+        public FsmBool lowViolence;
 
         public override void Reset()
         {
-            result = null;
+            lowViolence = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = SteamApps.BIsLowViolence();
+            lowViolence.Value = SteamApps.BIsLowViolence();
             Finish();
         }
     }

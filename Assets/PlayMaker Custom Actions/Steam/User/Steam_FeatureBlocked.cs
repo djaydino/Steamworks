@@ -8,7 +8,7 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Parental Settings")]
-    [Tooltip("Get parental settings")]
+    [Tooltip("check if certain feature is parental locked")]
     public class Steam_FeatureBlocked : FsmStateAction
     {
         public EParentalFeature parentalFeature = EParentalFeature.k_EFeatureBrowser;

@@ -13,7 +13,6 @@ namespace HutongGames.PlayMaker.Actions
     public class Steam_GetFriendRelationship : FsmStateAction
     {
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [Tooltip("Friend relationship")]

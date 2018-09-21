@@ -12,9 +12,8 @@ namespace HutongGames.PlayMaker.Actions
     [Tooltip("get restrictions from current user")]
     public class Steam_GetUserRestrictions : FsmStateAction
     {
-        [Tooltip("if current user is chat restricted, he can't send or receive any text/voice chat messages. the user can't see custom avatars. But the user can be online and send/recv game invites. a chat restricted user can't add friends or join any groups.")]
         [UIHint(UIHint.Variable)]
-        public FsmString restriction;
+        public FsmString restrictionType;
 
         [Tooltip("get the result as an index 'none' would be 0 and 'trading' would be 7")]
         [UIHint(UIHint.Variable)]
@@ -31,7 +30,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void Reset()
         {
-            restriction = null;
+            restrictionType = null;
             index = null;
         }
 
@@ -41,42 +40,42 @@ namespace HutongGames.PlayMaker.Actions
             {
                 case 0:
                     Fsm.Event(none);
-                    if (restriction != null) restriction.Value = "None";
+                    if (restrictionType != null) restrictionType.Value = "None";
                     if (index != null) index.Value = 0;
                     break;
                 case 1:
                     Fsm.Event(unknown);
-                    if (restriction != null) restriction.Value = "Unknown";
+                    if (restrictionType != null) restrictionType.Value = "Unknown";
                     if (index != null) index.Value = 1;
                     break;
                 case 2:
                     Fsm.Event(anyChat);
-                    if (restriction != null) restriction.Value = "Any Chat";
+                    if (restrictionType != null) restrictionType.Value = "Any Chat";
                     if (index != null) index.Value = 2;
                     break;
                 case 4:
                     Fsm.Event(voiceChat);
-                    if (restriction != null) restriction.Value = "Voice Chat";
+                    if (restrictionType != null) restrictionType.Value = "Voice Chat";
                     if (index != null) index.Value = 3;
                     break;
                 case 8:
                     Fsm.Event(groupChat);
-                    if (restriction != null) restriction.Value = "Group Chat";
+                    if (restrictionType != null) restrictionType.Value = "Group Chat";
                     if (index != null) index.Value = 4;
                     break;
                 case 16:
                     Fsm.Event(rating);
-                    if (restriction != null) restriction.Value = "Rating";
+                    if (restrictionType != null) restrictionType.Value = "Rating";
                     if (index != null) index.Value = 5;
                     break;
                 case 32:
                     Fsm.Event(gameInvites);
-                    if (restriction != null) restriction.Value = "Game Invites";
+                    if (restrictionType != null) restrictionType.Value = "Game Invites";
                     if (index != null) index.Value = 6;
                     break;
                 case 64:
                     Fsm.Event(trading);
-                    if (restriction != null) restriction.Value = "Trading";
+                    if (restrictionType != null) restrictionType.Value = "Trading";
                     if (index != null) index.Value = 7;
                     break;
             }

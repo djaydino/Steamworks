@@ -19,6 +19,8 @@ namespace HutongGames.PlayMaker.Actions
             Medium,
             Large
         }
+        protected Callback<AvatarImageLoaded_t> m_AvatarImageLoaded;
+        private int imageID;
 
         [Tooltip("Select avatar size to load. Warning!! Many users do not have Large avatars")]
         public AvaterSize avatarSize = AvaterSize.Small;
@@ -28,6 +30,7 @@ namespace HutongGames.PlayMaker.Actions
         public FsmTexture avatar;
 
         public FsmEvent noAvatar;
+        public FsmEvent imageNotLoadedYet;
 
         public override void Reset()
         {
@@ -36,7 +39,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-            int imageID = 0;
+            imageID = 0;
 
             switch (avatarSize)
             {
@@ -54,7 +57,12 @@ namespace HutongGames.PlayMaker.Actions
             }
             if (imageID != 0)
             {
-                GetAvatar(imageID);
+                if(imageID != -1) GetAvatar(imageID);
+                else
+                {
+                    m_AvatarImageLoaded = Callback<AvatarImageLoaded_t>.Create(OnAvatarImageLoaded);
+                    Fsm.Event(imageNotLoadedYet);
+                }
             }
             else Fsm.Event(noAvatar);
             Finish();
@@ -81,6 +89,11 @@ namespace HutongGames.PlayMaker.Actions
                     avatar.Value = ret;
                 }
             }
+        }
+
+        void OnAvatarImageLoaded(AvatarImageLoaded_t pCallback)
+        {
+            GetAvatar(imageID);
         }
     }
 }

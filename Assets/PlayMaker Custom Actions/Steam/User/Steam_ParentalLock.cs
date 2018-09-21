@@ -8,7 +8,7 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Parental Settings")]
-    [Tooltip("Get parental settings")]
+    [Tooltip("Check if parental lock is enabled and check if locked")]
     public class Steam_ParentalLock : FsmStateAction
     {
         [UIHint(UIHint.Variable)]

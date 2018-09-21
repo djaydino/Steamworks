@@ -9,11 +9,10 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Check If friend is Playing a game")]
+    [Tooltip("Check If friend is Playing a game and extra info")]
     public class Steam_GetFriendIsPlayingGame : FsmStateAction
     {
         [RequiredField]
-        [Tooltip("Friends SteamID")]
         public FsmString steamID;
 
         [Tooltip("game ID")]

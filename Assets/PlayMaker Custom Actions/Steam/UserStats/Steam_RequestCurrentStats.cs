@@ -18,8 +18,6 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void OnEnter()
         {
-           // UserStatsReceived_t test = RequestIsDone;
-
                 bool currentStat = SteamUserStats.RequestCurrentStats();
                 if(currentStat)
                 {

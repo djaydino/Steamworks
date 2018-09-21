@@ -9,10 +9,10 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Friends")]
-    [Tooltip("Set a new personal name (display) name.")]
+    [Tooltip("Get")]
     public class Steam_GetPersonaState : FsmStateAction
     {
-        [Tooltip("get the result as a string")]
+        [Tooltip("Gets the friend status of the current user.")]
         [UIHint(UIHint.Variable)]
         public FsmString personalState;
 

@@ -8,21 +8,21 @@ using Steamworks;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Gets the Steam UI language")]
+    [Tooltip("Check if VR headset Streaming is Enables")]
     public class Steam_IsVRHeadsetStreamingEnabled : FsmStateAction
     {
 
         [UIHint(UIHint.Variable)]
-        public FsmBool result;
+        public FsmBool isEnabled;
 
         public override void Reset()
         {
-            result = null;
+            isEnabled = null;
         }
 
         public override void OnEnter()
         {
-            result.Value = (bool)SteamUtils.IsVRHeadsetStreamingEnabled();
+            isEnabled.Value = (bool)SteamUtils.IsVRHeadsetStreamingEnabled();
             Finish();
         }
     }

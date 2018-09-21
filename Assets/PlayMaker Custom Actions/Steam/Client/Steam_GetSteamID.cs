@@ -4,7 +4,6 @@
 
 using UnityEngine;
 using Steamworks;
-using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
@@ -16,12 +15,6 @@ namespace HutongGames.PlayMaker.Actions
         [UIHint(UIHint.Variable)]
         public FsmString steamID;
 
-        public FsmEvent success;
-
-        public FsmEvent failed;
-
-        private int statInt;
-
         public override void Reset()
         {
             steamID = null;
@@ -32,7 +25,6 @@ namespace HutongGames.PlayMaker.Actions
         {
             CSteamID ID = SteamUser.GetSteamID();
             steamID.Value = ID.ToString();
-
             Finish();
         }
     }

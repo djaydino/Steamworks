@@ -1460,13 +1460,15 @@ MonoBehaviour:
         actionNames:
         - HutongGames.PlayMaker.Actions.ApplicationRunInBackground
         - HutongGames.PlayMaker.Actions.Steam_IsInitialized
+        - HutongGames.PlayMaker.Actions.Steam_ActivateGameOverlay
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0101
-        actionStartIndex: 0000000001000000
-        actionHashCodes: 62f9520352348201
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010101
+        actionStartIndex: 000000000100000004000000
+        actionHashCodes: 62f95203523482017ecb1c04
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -1504,19 +1506,20 @@ MonoBehaviour:
         stringParams:
         - Initialized
         - 
-        byteData: 
+        byteData: 00000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 11000000110000001700000017000000
+        paramDataType: 1100000011000000170000001700000007000000
         paramName:
         - runInBackground
         - isInitialized
         - initialized
         - notInitialized
-        paramDataPos: 00000000010000000000000001000000
-        paramByteDataSize: 00000000000000000000000000000000
+        - overlayType
+        paramDataPos: 0000000001000000000000000100000000000000
+        paramByteDataSize: 0000000000000000000000000000000004000000
     - name: NAME ME!! 1
       description: 
       colorIndex: 0
@@ -2339,15 +2342,13 @@ MonoBehaviour:
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.Steam_OverlayActive
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
-        - 
-        actionEnabled: 0001
-        actionIsOpen: 0101
-        actionStartIndex: 0000000003000000
-        actionHashCodes: 5234820148c01101
+        actionEnabled: 01
+        actionIsOpen: 01
+        actionStartIndex: 00000000
+        actionHashCodes: 48c01101
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -2370,13 +2371,7 @@ MonoBehaviour:
           networkSync: 0
           value: 2
         fsmIntParams: []
-        fsmBoolParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
@@ -2384,23 +2379,18 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - 
-        - 
-        - 
         byteData: 00
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1100000017000000170000000f0000001700000001000000
+        paramDataType: 0f0000001700000001000000
         paramName:
-        - result
-        - active
-        - notActive
         - time
         - finishEvent
         - realTime
-        paramDataPos: 000000000000000001000000000000000200000000000000
-        paramByteDataSize: 000000000000000000000000000000000000000001000000
+        paramDataPos: 000000000000000000000000
+        paramByteDataSize: 000000000000000001000000
     - name: NAME ME!! 1
       description: 
       colorIndex: 0
@@ -3748,7 +3738,7 @@ MonoBehaviour:
         actionEnabled: 010101
         actionIsOpen: 010101
         actionStartIndex: 000000000400000005000000
-        actionHashCodes: f8c566011322710045b73600
+        actionHashCodes: f8c56601132271004349e902
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -3806,12 +3796,13 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - No Avatar
+        - 
         byteData: 0001000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000011000000110000000100000012000000070000002100000017000000
+        paramDataType: 140000001100000011000000010000001200000007000000210000001700000017000000
         paramName:
         - gameObject
         - isOn
@@ -3821,8 +3812,9 @@ MonoBehaviour:
         - avatarSize
         - avatar
         - noAvatar
-        paramDataPos: 0000000000000000010000000000000000000000010000000000000000000000
-        paramByteDataSize: 0000000000000000000000000100000000000000040000000000000000000000
+        - imageNotLoadedYet
+        paramDataPos: 000000000000000001000000000000000000000001000000000000000000000001000000
+        paramByteDataSize: 000000000000000000000000010000000000000004000000000000000000000000000000
     - name: Quit Game
       description: 
       colorIndex: 0

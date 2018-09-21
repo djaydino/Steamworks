@@ -9,14 +9,13 @@ using System;
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - UserStats")]
-    [Tooltip("Sets Stat int information")]
+    [Tooltip("Set a Stat float Value")]
     public class Steam_SetStatFloat : FsmStateAction
 
     {
         [RequiredField]
         public FsmString statAPIname;
 
-        [UIHint(UIHint.Variable)]
         public FsmFloat floatData;
 
         public FsmEvent success;

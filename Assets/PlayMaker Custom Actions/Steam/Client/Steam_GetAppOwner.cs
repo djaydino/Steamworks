@@ -12,21 +12,26 @@ namespace HutongGames.PlayMaker.Actions
     [Tooltip("returns the SteamID of the original owner. If different from current user, it's borrowed")]
     public class Steam_GetAppOwner : FsmStateAction
     {
-        [RequiredField]
-        public FsmInt appID;
 
-        [RequiredField]
         [UIHint(UIHint.Variable)]
-        public FsmString steamID64;
+        public FsmString steamID;
+
+        public FsmEvent isOwner;
+
+        public FsmEvent isBorrowed;
 
         public override void Reset()
         {
-            steamID64 = null;
+            steamID = null;
         }
 
         public override void OnEnter()
         {
-            steamID64.Value = Convert.ToString(SteamApps.GetAppOwner());
+            CSteamID iD = SteamUser.GetSteamID();
+            CSteamID owner = SteamApps.GetAppOwner();
+            steamID.Value = Convert.ToString(owner);
+            if (iD == owner) Fsm.Event(isOwner);
+            else Fsm.Event(isBorrowed);
             Finish();
         }
     }
