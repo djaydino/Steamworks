@@ -4,25 +4,26 @@
 
 using UnityEngine;
 using Steamworks;
+using System;
 
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
-    [Tooltip("Check if the license owned by the user provides low violence depots.")]
-    public class Steam_LowViolenceCheck : FsmStateAction
+    [Tooltip("Releases a previously created communications pipe. NOT THREADSAFE - ensure that no other threads are accessing Steamworks API when calling")]
+    public class Steam_ReleaseSteamPipe : FsmStateAction
     {
         [RequiredField]
-        [UIHint(UIHint.Variable)]
-        public FsmBool lowViolence;
+        [Tooltip("the steamPipe ID")]
+        public FsmInt steamPipeId;
 
         public override void Reset()
         {
-            lowViolence = null;
+            steamPipeId = null;
         }
 
         public override void OnEnter()
         {
-            lowViolence.Value = SteamApps.BIsLowViolence();
+            SteamClient.BReleaseSteamPipe((HSteamPipe)steamPipeId.Value);
             Finish();
         }
     }
