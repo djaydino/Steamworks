@@ -17,17 +17,21 @@ namespace HutongGames.PlayMaker.Actions
         public FsmString actionSetName;
 
         [ActionSection("Result")]
-
-        public FsmInt actionSetID;
+        [RequiredField]
+        [ObjectType(typeof(SteamControllerAction))]
+        [UIHint(UIHint.Variable)]
+        public FsmObject ControllerAction;
 
         public override void Reset()
         {
-            actionSetName = null;
+            ControllerAction = null;
         }
 
         public override void OnEnter()
         {
-            actionSetID.Value = Convert.ToInt32((ulong)SteamController.GetActionSetHandle(actionSetName.Value));
+
+            ControllerAction.Value = new SteamControllerAction(SteamController.GetActionSetHandle(actionSetName.Value));
+      
             Finish();
         }
 
