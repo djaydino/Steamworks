@@ -5,7 +5,7 @@
 using UnityEngine;
 using Steamworks;
 using System;
-
+#if !DISABLESTEAMWORKS
 namespace HutongGames.PlayMaker.Actions
 {
     [ActionCategory("Steamworks.NET - Client")]
@@ -42,3 +42,4 @@ namespace HutongGames.PlayMaker.Actions
         }
     }
 }
+#endif

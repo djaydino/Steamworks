@@ -11,11 +11,12 @@ namespace HutongGames.PlayMaker.Actions
     [Tooltip("Returns the number of DLC's for the running app")]
     public class Steam_GetDLCCount : FsmStateAction
     {
+
         [RequiredField]
         [UIHint(UIHint.Variable)]
         public FsmInt result;
 
-
+#if !DISABLESTEAMWORKS
         public override void Reset()
         {
             result = null;
@@ -26,5 +27,6 @@ namespace HutongGames.PlayMaker.Actions
             result.Value = SteamApps.GetDLCCount();
             Finish();
         }
+#endif
     }
 }

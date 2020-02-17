@@ -1,9 +1,15 @@
 // (c) Copyright HutongGames, LLC 2010-2018. All rights reserved.
 // Made by djaydino -- http://www.jinxtergames.com/ --
 /*--- __ECO__ __PLAYMAKER__ __ACTION__ ---*/
+#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_TVOS || UNITY_WEBGL || UNITY_WSA || UNITY_PS4 || UNITY_WII || UNITY_XBOXONE || UNITY_SWITCH
+#define DISABLESTEAMWORKS
+#endif
 
 using UnityEngine;
+
+#if !DISABLESTEAMWORKS
 using Steamworks;
+#endif
 
 namespace HutongGames.PlayMaker.Actions
 {
@@ -23,6 +29,7 @@ namespace HutongGames.PlayMaker.Actions
         }
         public OverlayType overlayType = OverlayType.friends;
 
+#if !DISABLESTEAMWORKS
         public override void OnEnter()
         {
             if (!Application.isEditor)
@@ -35,5 +42,7 @@ namespace HutongGames.PlayMaker.Actions
             }
             Finish();
         }
+#endif
     }
 }
+

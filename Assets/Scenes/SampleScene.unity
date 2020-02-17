@@ -526,7 +526,7 @@ MonoBehaviour:
         actionEnabled: 01
         actionIsOpen: 01
         actionStartIndex: 00000000
-        actionHashCodes: 6513a701
+        actionHashCodes: b2431400
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -543,18 +543,19 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: Menu
-        fsmObjectParams: []
+        fsmObjectParams:
+        - useVariable: 1
+          name: Controller Action
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: SteamControllerAction
+          value: {fileID: 0}
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams: []
-        fsmIntParams:
-        - useVariable: 1
-          name: Action Set ID
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0
+        fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
         fsmVector3Params: []
@@ -567,10 +568,10 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1200000010000000
+        paramDataType: 1200000018000000
         paramName:
         - actionSetName
-        - actionSetID
+        - ControllerAction
         paramDataPos: 0000000000000000
         paramByteDataSize: 0000000000000000
     events:
@@ -626,14 +627,21 @@ MonoBehaviour:
       rectVariables: []
       quaternionVariables: []
       gameObjectVariables: []
-      objectVariables: []
+      objectVariables:
+      - useVariable: 1
+        name: Controller Action
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        typeName: SteamControllerAction
+        value: {fileID: 0}
       materialVariables: []
       textureVariables: []
       arrayVariables: []
       enumVariables: []
       categories:
       - 
-      variableCategoryIDs: 000000000000000000000000
+      variableCategoryIDs: 00000000000000000000000000000000
     description: 
     docUrl: 
     showStateLabel: 0
@@ -654,7 +662,7 @@ MonoBehaviour:
     RestartOnEnable: 1
     EnableDebugFlow: 0
     EnableBreakpoints: 1
-    editorFlags: 3
+    editorFlags: 7
     activeStateName: 
     mouseEvents: 0
     handleLevelLoaded: 0
@@ -1390,7 +1398,7 @@ MonoBehaviour:
         width: 114
         height: 48
       isBreakpoint: 0
-      isSequence: 0
+      isSequence: 1
       hideUnused: 0
       transitions:
       - fsmEvent:
@@ -2654,8 +2662,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previewOnGUI: 1
   enableGUILayout: 1
-  drawStateLabels: 0
-  enableStateLabelsInBuilds: 1
+  drawStateLabels: 1
+  enableStateLabelsInBuilds: 0
   GUITextureStateLabels: 0
   GUITextStateLabels: 0
   filterLabelsWithDistance: 0

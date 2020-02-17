@@ -2,8 +2,16 @@
 // Made by djaydino -- http://www.jinxtergames.com/ --
 /*--- __ECO__ __PLAYMAKER__ __ACTION__ ---*/
 
+#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_TVOS || UNITY_WEBGL || UNITY_WSA || UNITY_PS4 || UNITY_WII || UNITY_XBOXONE || UNITY_SWITCH
+#define DISABLESTEAMWORKS
+#endif
+
 using UnityEngine;
+
+#if !DISABLESTEAMWORKS
 using Steamworks;
+#endif
+
 using System;
 
 namespace HutongGames.PlayMaker.Actions
@@ -12,10 +20,17 @@ namespace HutongGames.PlayMaker.Actions
     [Tooltip("Activate the store overlay a certain overlay type")]
     public class Steam_ActivateGameOverlayToStore : FsmStateAction
     {
+#if !DISABLESTEAMWORKS
         [RequiredField]
         public FsmInt appID;
 
         public EOverlayToStoreFlag overlayType = EOverlayToStoreFlag.k_EOverlayToStoreFlag_None;
+
+        public override void Reset()
+        {
+            appID = null;
+        }
+
 
         public override void OnEnter()
         {
@@ -29,5 +44,11 @@ namespace HutongGames.PlayMaker.Actions
             }
             Finish();
         }
+#else
+        public override string ErrorCheck()
+        {
+            return "Steamworks is disabled!";
+        }
+#endif
     }
 }

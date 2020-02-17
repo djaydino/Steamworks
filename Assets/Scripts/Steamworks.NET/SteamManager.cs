@@ -1,9 +1,15 @@
 // The SteamManager is designed to work with Steamworks.NET
 // This file is released into the public domain.
 // Where that dedication is not recognized you are granted a perpetual,
-// irrevokable license to copy and modify this file as you see fit.
+// irrevocable license to copy and modify this file as you see fit.
 //
-// Version: 1.0.5
+// Version: 1.0.7
+
+#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_TVOS || UNITY_WEBGL || UNITY_WSA || UNITY_PS4 || UNITY_WII || UNITY_XBOXONE || UNITY_SWITCH
+#define DISABLESTEAMWORKS
+#endif
+
+#if !DISABLESTEAMWORKS
 
 using UnityEngine;
 using System.Collections;
@@ -27,7 +33,7 @@ public class SteamManager : MonoBehaviour {
 		}
 	}
 
-	private static bool s_EverInialized;
+	private static bool s_EverInitialized;
 
 	private bool m_bInitialized;
 	public static bool Initialized {
@@ -49,7 +55,7 @@ public class SteamManager : MonoBehaviour {
 		}
 		s_instance = this;
 
-		if(s_EverInialized) {
+		if(s_EverInitialized) {
 			// This is almost always an error.
 			// The most common case where this happens is when SteamManager gets destroyed because of Application.Quit(),
 			// and then some Steamworks code in some other OnDestroy gets called afterwards, creating a new SteamManager.
@@ -75,13 +81,12 @@ public class SteamManager : MonoBehaviour {
 			// Once you get a Steam AppID assigned by Valve, you need to replace AppId_t.Invalid with it and
 			// remove steam_appid.txt from the game depot. eg: "(AppId_t)480" or "new AppId_t(480)".
 			// See the Valve documentation for more information: https://partner.steamgames.com/doc/sdk/api#initialization_and_shutdown
-			if (SteamAPI.RestartAppIfNecessary((AppId_t)480))
-            {
+			if (SteamAPI.RestartAppIfNecessary(AppId_t.Invalid)) {
 				Application.Quit();
 				return;
 			}
 		}
-		catch (System.DllNotFoundException e) { // We catch this exception here, as it will be the first occurence of it.
+		catch (System.DllNotFoundException e) { // We catch this exception here, as it will be the first occurrence of it.
 			Debug.LogError("[Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n" + e, this);
 
 			Application.Quit();
@@ -94,7 +99,7 @@ public class SteamManager : MonoBehaviour {
 		// [*] The Steam client couldn't determine the App ID of game. If you're running your application from the executable or debugger directly then you must have a [code-inline]steam_appid.txt[/code-inline] in your game directory next to the executable, with your app ID in it and nothing else. Steam will look for this file in the current working directory. If you are running your executable from a different directory you may need to relocate the [code-inline]steam_appid.txt[/code-inline] file.
 		// [*] Your application is not running under the same OS user context as the Steam client, such as a different user or administration access level.
 		// [*] Ensure that you own a license for the App ID on the currently active Steam account. Your game must show up in your Steam library.
-		// [*] Your App ID is not completely set up, i.e. in [code-inline]Release State: Unavailable[/code-inline], or it's missing default packages.
+		// [*] Your App ID is not completely set up, i.e. in Release State: Unavailable, or it's missing default packages.
 		// Valve's documentation for this is located here:
 		// https://partner.steamgames.com/doc/sdk/api#initialization_and_shutdown
 		m_bInitialized = SteamAPI.Init();
@@ -104,7 +109,7 @@ public class SteamManager : MonoBehaviour {
 			return;
 		}
 
-		s_EverInialized = true;
+		s_EverInitialized = true;
 	}
 
 	// This should only ever get called on first load and after an Assembly reload, You should never Disable the Steamworks Manager yourself.
@@ -118,8 +123,8 @@ public class SteamManager : MonoBehaviour {
 		}
 
 		if (m_SteamAPIWarningMessageHook == null) {
-			// Set up our callback to recieve warning messages from Steam.
-			// You must launch with "-debug_steamapi" in the launch args to recieve warnings.
+			// Set up our callback to receive warning messages from Steam.
+			// You must launch with "-debug_steamapi" in the launch args to receive warnings.
 			m_SteamAPIWarningMessageHook = new SteamAPIWarningMessageHook_t(SteamAPIDebugTextHook);
 			SteamClient.SetWarningMessageHook(m_SteamAPIWarningMessageHook);
 		}
@@ -151,3 +156,5 @@ public class SteamManager : MonoBehaviour {
 		SteamAPI.RunCallbacks();
 	}
 }
+
+#endif // !DISABLESTEAMWORKS

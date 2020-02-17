@@ -31,7 +31,7 @@ MonoBehaviour:
   filesToIncludeGUID: []
   foldersToExcludeGUID: []
   filesToExcludeGUID: []
-  packageName: Steam_Full
+  packageName: Steam_Beta v0.1.7
   targetDirectory: D:/Git
   fileExistsCheck: 1
   expandedList: 0
